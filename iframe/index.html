@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Home page</title>
+</head>
+<body>
+  <nav>
+    <a href="/iframe" onclick="loadPage()">Home</a> |
+    <a href="#module1" onclick="loadPage()">Module 1</a> |
+    <a href="#module2" onclick="loadPage()">Module 2</a>
+  </nav>
+  <iframe id="myFrame" style="border:0px" src="./home"></iframe>
+
+  <script>
+    function getModuleName () {
+      const parts = location.href.split('#')
+      return parts[1] || 'home'
+    }
+    function loadPage () {
+      setTimeout(() => {
+        const module = getModuleName()
+        window.myFrame.src = './' + module
+      }, 100)
+    }
+
+    // initial call
+    loadPage()
+  </script>
+</body>
+</html>
